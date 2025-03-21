@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import heropic from "../assets/heropic.jpeg";
+import logo2 from "../assets/logo2.webp";
+import panier from "../assets/panier.png";
 
 function Hero() {
   return (
@@ -13,7 +14,9 @@ function Hero() {
           </HeroTitle>
 
           <HeroText>
-            Get your healthy meals delivered to your doorsteps
+            Get your healthy meals delivered to your doorsteps. We deliver
+            organic food that is good for your health. Our meals are prepared
+            with fresh ingredients and are delivered to your doorsteps.{" "}
           </HeroText>
 
           <HeroButtons>
@@ -22,7 +25,13 @@ function Hero() {
           </HeroButtons>
         </HeroContentLeft>
 
-        <HeroContentRight></HeroContentRight>
+        <HeroContentRight>
+          <img
+            src={panier}
+            alt="logo
+          "
+          />
+        </HeroContentRight>
       </HeroContainer>
     </>
   );
@@ -30,46 +39,46 @@ function Hero() {
 export default Hero;
 
 const HeroContentRight = styled.div`
-  height: 40%;
-  width: 40%;
+  width: 50%;
+  height: 100%;
   img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 80%;
+    object-fit: fill;
+    margin-top: 5px;
+    margin-left: 50px;
+    display: block;
   }
 `;
 
 const Button2 = styled.button`
-  padding: 1.5rem 5rem;
-  border: none;
-  margin-right: 5rem;
-  background-color: rgb(109, 206, 90);
+  background-color: red;
   color: #fff;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 1.2rem;
-  font-weight: 500;
-  border-radius: 35px;
-  margin-top: 1rem;
+  font-size: 1rem;
+  width: 10rem;
+  font-weight: 600;
 
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
   &:hover {
-    background-color: red;
+    background-color: green;
   }
 `;
 
 const Button1 = styled.button`
-  padding: 1.5rem 5rem;
-  border: none;
-  background-color: rgb(109, 206, 90);
+  background-color: green;
   color: #fff;
+  font-size: 1rem;
+  width: 10rem;
+  font-weight: 600;
+  margin-right: 20px;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
   cursor: pointer;
-  transition: 0.3s;
-  border-radius: 20px;
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  border-radius: 35px;
-  font-weight: 500;
-
+  transition: all 0.3s ease-in-out;
   &:hover {
     background-color: red;
   }
@@ -77,49 +86,45 @@ const Button1 = styled.button`
 
 const HeroButtons = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  background-color: lightcoral;
-  padding-bottom: 2rem;
+  margin-top: 60px;
 `;
 
-const HeroText = styled.p`
+const HeroText = styled.div`
   font-size: 1.2rem;
-  color: #333;
-  margin-top: 2px;
-  color: black;
-  font-size: 1rem;
-  font-weight: 400;
+  color: #000;
+  margin-bottom: 20px;
+  
+  line-height: 1.5;
+  font-fami
 `;
 
-const HeroTitle = styled.h1`
-  font-size: 3rem;
+const HeroTitle = styled.div`
+  font-size: 4.2rem;
   font-weight: 700;
-  color: #333;
-  margin-bottom: 1rem;
-  color: black;
+  margin-top: -150px;
+  line-height: 1.1;
+
+  color: #000;
+  margin-bottom: 20px;
   span {
-    color: rgb(109, 206, 90);
+    color: green;
+    font-size: 5rem;
   }
 `;
 
 const HeroContentLeft = styled.div`
   width: 50%;
-  height: 100%;
-  justify-content: center;
-  display: flex;
-  padding: 0 5rem;
-  flex-direction: column;
-  background-color: lightyellow;
+  margin-left: 50px;
 `;
 
 const HeroContainer = styled.div`
   display: flex;
-  width: 100%;
-  height: 80vh;
   justify-content: space-between;
+  margin-top: 200px;
   align-items: center;
-  padding: 0 2rem;
-  margin-top: 5rem;
-  background-color: lightblue;
+  padding: 0 50px;
+  height: 80vh;
+  padding-left: 80px;
+  padding-right: 80px;
+  background-color: rgb(247, 231, 218);
 `;

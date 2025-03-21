@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo1.png";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 function Header() {
@@ -9,8 +9,16 @@ function Header() {
         <Nav>
           <Logo>
             <img src={logo} alt="React logo" />
+            <LogoName> Fresh Fresh </LogoName>
           </Logo>
-          <UL>
+
+          <MobileIcon>
+            <Bar></Bar>
+            <Bar></Bar>
+            <Bar></Bar>
+          </MobileIcon>
+
+          <Ulist>
             <LI>
               <A href="">
                 Home <MdKeyboardArrowRight />
@@ -52,7 +60,8 @@ function Header() {
                 <MdKeyboardArrowRight />
               </A>
             </LI>
-          </UL>
+          </Ulist>
+
           <Button>Get Menu</Button>
         </Nav>
       </HeaderContainer>
@@ -62,72 +71,215 @@ function Header() {
 
 export default Header;
 
+// const Button = styled.button`
+//   background-color: red;
+//   color: #fff;
+//   font-size: 1rem;
+//   width: 10rem;
+//   font-weight: 600;
+//   margin-left: auto;
+//   margin-right: 100px;
+//   padding: 0.6rem 1rem;
+//   border-radius: 0.5rem;
+//   border: none;
+//   cursor: pointer;
+//   transition: all 0.3s ease-in-out;
+//   &:hover {
+//     background-color: green;
+//   }
+// `;
+
+// const A = styled.a`
+//   text-decoration: none;
+//   color: #000;
+//   font-size: 1rem;
+//   font-weight: 600;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+//   &:hover {
+//     color: green;
+//     underline: 5px solid green;
+//   }
+// `;
+
+// const LI = styled.li`
+//   list-style: none;
+//   margin: 0 1rem;
+// `;
+
+// const UL = styled.div`
+//   display: flex;
+//   align-items: center;
+//   margin-left: 50px;
+// `;
+
+// const Logo = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   margin-right: auto;
+//   margin-left: 130px;
+//   align-items: center;
+//   width: 10rem;
+
+//   height: 3rem;
+//   img {
+//     width: 200px;
+//   }
+
+//   }
+// `;
+
+// const Nav = styled.nav`
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   width: 100%;
+
+//   }
+// `;
+
+// const HeaderContainer = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   margin-top: 50px;
+//   width: 100%;
+//   height: 10px;
+//   @media (min-width: 320px) and (max-width: 768px) {
+//     flex-direction: column;
+//     background-color: blue;
+//   }
+// `;
+
 const Button = styled.button`
-  background-color: rgb(109, 206, 90);
+  background-color: red;
   color: #fff;
-  border: none;
-  margin-left: 7rem;
-  padding: 0.6rem 2rem;
-  border-radius: 20px;
   font-size: 1rem;
-  font-weight: 500;
+  width: 10rem;
+  font-weight: 600;
+  margin-left: auto;
+  margin-right: 100px;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
   &:hover {
-    background-color: red;
+    background-color: green;
   }
-`;
-
-const Logo = styled.div`
-  margin-right: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    width: 10rem;
-    justify-content: center;
-    display: flex;
+  @media (min-width: 320px) and (max-width: 768px) {
+    padding: 0.6rem 1rem;
+    margin-left: 190px;
+    margin-top: -6s0px;
   }
 `;
 
 const A = styled.a`
-  color: #000;
   text-decoration: none;
+  color: #000;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   display: flex;
-  align-items: center;
+  justify-content: center;
 
-  &:hover {
-    color: red;
-  }
+  @media (min-width: 320px) and (max-width: 768px) {
+
+  text-align: center;
+  font-size: 1.5rem;
 `;
 
 const LI = styled.li`
-  font-size: 1rem;
-`;
+  list-style: none;
+  margin: 0 1rem;
 
-const UL = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  list-style-type: none;
+  @media (min-width: 320px) and (max-width: 768px) {
+  flex-basis: 100%;
 `;
-
-const Nav = styled.div`
+const Ulist = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: rgb(178, 199, 221);
+  list-style: none;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    margin-top: -250px;
+  }
+`;
+
+const LogoName = styled.h4`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000;
+  margin-left: 10px;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+  }
+`;
+
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 60px;
+
+     @media (min-width: 320px) and (max-width: 768px) {
+  display: none;
+  }
+
+ 
+`;
+
+const Nav = styled.nav`
+  position:absolute;
+  display: flex;
+  jiustify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  background-color: yellow;
+  top: 0;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+  flex-wrap: wrap;
+  height: 500px;
+  display: flex;
+  background-color: white;
+  
+
 `;
 
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f9fa;
-  padding: 1rem;
-  background-color: rgb(196, 199, 202);
+  width: 100%;
+`;
+
+const MobileIcon = styled.div`
+  display: none;
+  cursor: pointer;
+  width: 30px;
+
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-right: 20px;
+  }
+
+  @media (min-width: 320px) and (max-width: 768px) {
+
+    display: flex;
+    flex-wrap: wrap;
+`;
+
+const Bar = styled.div`
+  flex-basis: 100%;
+  heighr: 3px;
+  background-color: #000;
+  margin: 4px;
 `;

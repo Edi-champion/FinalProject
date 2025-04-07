@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import Header from "../components/Header";
 import Banner from "../components/ProductPageComp/Banner";
 import ProductList from "../components/ProductPageComp/ProductList";
+import Footer from "../components/Footer";
 
 function ProductPage() {
   return (
@@ -9,6 +10,7 @@ function ProductPage() {
       <Header />
       <Banner />
       <ProductList />
+      <Footer />
     </>
   );
 }

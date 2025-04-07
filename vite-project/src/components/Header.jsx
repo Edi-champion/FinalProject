@@ -1,67 +1,42 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import logo from "../assets/logo1.png";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdMenu, MdClose } from "react-icons/md";
+import AboutUs from "../Pages/AboutUs";
+import ProductPage from "../Pages/ProductPage";
+import LandingPage from "../Pages/LandingPage";
 
 function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <HeaderContainer>
       <Nav>
         <Logo>
           <img src={logo} alt="React logo" />
-          <LogoName> Fresh Fresh </LogoName>
         </Logo>
 
-        <MobileIcon>
-          <Bar></Bar>
-          <Bar></Bar>
-          <Bar></Bar>
+        <MobileIcon onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <MdClose size={30} /> : <MdMenu size={30} />}
         </MobileIcon>
 
-        <Ulist>
+        <Ulist isOpen={isOpen}>
+          <CloseButton onClick={() => setIsOpen(false)}>
+            <MdClose size={30} />
+          </CloseButton>
           <LI>
-            <A href="">
-              Home <MdKeyboardArrowRight />
-            </A>
+            <Link to="/"></Link>Home
           </LI>
           <LI>
-            <A href="">
-              About us
-              <MdKeyboardArrowRight />
-            </A>
+            <Link to="/AboutUs">About Us</Link>
           </LI>
           <LI>
-            <A href="">
-              Blog
-              <MdKeyboardArrowRight />
-            </A>
+            <Link to="/ProductPage">Products</Link>
           </LI>
-          <LI>
-            <A href="">
-              Contacts
-              <MdKeyboardArrowRight />
-            </A>
-          </LI>
-          <LI>
-            <A href="">
-              Pages
-              <MdKeyboardArrowRight />
-            </A>
-          </LI>
-          <LI>
-            <A href="">
-              Get menu
-              <MdKeyboardArrowRight />
-            </A>
-          </LI>
-          <LI>
-            <A href="">
-              Multipage
-              <MdKeyboardArrowRight />
-            </A>
-          </LI>
+          <LI>Blog</LI>
+          <LI>Contacts</LI>
         </Ulist>
-
-        <Button>Get Menu</Button>
       </Nav>
     </HeaderContainer>
   );
@@ -69,46 +44,48 @@ function Header() {
 
 export default Header;
 
+// Styled Components
 const Button = styled.button`
   background-color: red;
-  color: #fff;
+  color: white;
   font-size: 1rem;
-  width: 10rem;
   font-weight: 600;
-  margin-left: auto;
-  margin-right: 100px;
-  padding: 0.6rem 1rem;
-  border-radius: 0.5rem;
+  padding: 0.6rem 2rem;
+  border-radius: 4rem;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  margin-left: auto;
+  margin-right: 250px;
 
   &:hover {
-    background-color: green;
+    background-color: darkgreen;
   }
 
-  @media (min-width: 320px) and (max-width: 768px) {
-    margin-right: 0;
-    margin-left: auto;
-    width: 100%;
-    margin-top: 20px;
-    height: 50px;
+  @media (max-width: 768px) {
+    width: 80%;
+    margin: 10px auto;
+    height: 40px;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
+    display: none;
   }
 `;
 
 const A = styled.a`
   text-decoration: none;
-  color: #000;
+  color: black;
   font-size: 1rem;
   font-weight: 600;
   display: flex;
   justify-content: center;
+  transition: color 0.3s;
 
   &:hover {
     color: green;
   }
 
-  @media (min-width: 320px) and (max-width: 768px) {
+  @media (max-width: 768px) {
     text-align: center;
     font-size: 1.2rem;
   }
@@ -118,89 +95,102 @@ const LI = styled.li`
   list-style: none;
   margin: 0 1rem;
 
-  @media (min-width: 320px) and (max-width: 768px) {
-    flex-basis: 100%;
+  @media (max-width: 768px) {
     margin: 10px 0;
     text-align: center;
   }
 `;
 
-const Ulist = styled.div`
+const Ulist = styled.ul`
   display: flex;
   align-items: center;
+  justify-content: center;
   list-style: none;
+  width: 50%;
+  padding: 0;
+  margin-left: auto;
 
-  @media (min-width: 320px) and (max-width: 768px) {
-    flex-wrap: wrap;
-    justify-content: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    margin-top: 20px;
+    height: 100vh;
+    background-color: white;
+    transform: ${({ isOpen }) =>
+      isOpen ? "translateX(0)" : "translateX(-100%)"};
+    transition: transform 0.3s ease-in-out;
+    padding-top: 60px;
+    box-shadow: ${({ isOpen }) =>
+      isOpen ? "0px 4px 10px rgba(0,0,0,0.1)" : "none"};
+    z-index: 1000;
   }
 `;
 
-const LogoName = styled.h4`
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #000;
-  margin-left: 10px;
+const CloseButton = styled.div`
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
 
-  @media (min-width: 320px) and (max-width: 768px) {
-    font-size: 1.2rem;
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 
 const Logo = styled.div`
   display: flex;
   align-items: center;
+  margin-left: 150px;
 
   img {
-    width: 60px;
+    width: 160px;
+    margin-right: -90px;
+    margin-top: 10px;
 
-    @media (min-width: 320px) and (max-width: 768px) {
-      width: 50px;
+    @media (max-width: 768px) {
+      width: 80px;
+      margin-left: -130px;
     }
   }
 `;
 
 const Nav = styled.nav`
-  position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 50px;
-  background-color: yellow;
+  width: 100%;
+  padding: 0 20px;
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 
-  @media (min-width: 320px) and (max-width: 768px) {
-    flex-wrap: wrap;
-    height: auto;
-    background-color: white;
-    padding: 20px 10px;
+  @media (max-width: 768px) {
+    justify-content: space-between;
+    padding: 20px;
   }
 `;
 
 const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  overflow-x: hidden;
 `;
 
 const MobileIcon = styled.div`
   display: none;
   cursor: pointer;
-  width: 30px;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 20px;
+  margin-left: auto;
 
-  @media (min-width: 320px) and (max-width: 768px) {
-    display: flex;
-    margin-right: 20px;
+  @media (max-width: 768px) {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    margin-right: 80px;
+    margin-top: 10px;
   }
-`;
-
-const Bar = styled.div`
-  height: 3px;
-  background-color: #000;
 `;

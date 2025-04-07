@@ -1,16 +1,18 @@
-import Header from "./components/Header.jsx";
-import Hero from "./components/Hero.jsx";
-import Banner from "./components/banner1.jsx";
-import Info from "./components/Info.jsx";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "./Pages/LandingPage";
+import AboutUs from "./Pages/AboutUs";
+import ProductPage from "./Pages/ProductPage";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Hero />
-      <Banner />
-      <Info />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/ProductPage" element={<ProductPage />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -6,150 +6,205 @@ import { MdOutlineFastfood } from "react-icons/md";
 function banner1() {
   return (
     <Wrapper>
-      <Wrapper1>
-        <Icon>
-          <MdDeliveryDining />
-        </Icon>
+      <WrapperBig>
+        <Wrapper1>
+          <Icon1>
+            <MdDeliveryDining />
+          </Icon1>
 
-        <Text>
-          <h4>Free delivery service</h4>
-          <p>Get your healthy meals delivered to your doorsteps. We deliver</p>
-        </Text>
-      </Wrapper1>
+          <Text1>
+            <h4>Easy payments</h4>
+            <p>
+              class aptent taciti sociosqu ad litora torquent per conubia nostra
+            </p>
+          </Text1>
+        </Wrapper1>
 
-      <Wrapper2>
-        <Icon>
-          <MdOutlinePayments />
-        </Icon>
+        <Wrapper2>
+          <Icon2>
+            <MdOutlinePayments />
+          </Icon2>
 
-        <Text>
-          <h4>Easy payments</h4>
-          <p>
-            class aptent taciti sociosqu ad litora torquent per conubia nostra
-          </p>
-        </Text>
-      </Wrapper2>
+          <Text2>
+            <h4>Easy payments</h4>
+            <p>
+              class aptent taciti sociosqu ad litora torquent per conubia nostra
+            </p>
+          </Text2>
+        </Wrapper2>
 
-      <Wrapper3>
-        <Icon>
-          <MdOutlineFastfood />
-        </Icon>
+        <Wrapper3>
+          <Icon3>
+            <MdOutlineFastfood />
+          </Icon3>
 
-        <Text>
-          <h4>Exact calories</h4>
-          <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque</p>
-        </Text>
-      </Wrapper3>
+          <Text3>
+            <h4>Exact calories</h4>
+            <p>
+              Nam libero tempore, cum soluta nobis est eligendi optio cumque
+            </p>
+          </Text3>
+        </Wrapper3>
+      </WrapperBig>
     </Wrapper>
   );
 }
 
 export default banner1;
 
-const Text = styled.div`
-  width: 50%;
+const Wrapper3 = styled.div`
   display: flex;
-  flex-direction: column;
-  text-align: center;
+  align-items: center;
+  background-color: #292d35;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 240px;
+  }
+`;
+
+const Text3 = styled.div`
+  width: 70%;
+  background-color: #292d35;
+  padding: 30px;
+  height: 70%;
+  margin-left: 20px;
+  color: white;
 
   h4 {
-    margin-bottom: 10px;
-    font-size: 1.25rem;
+    font-size: 20px;
+    margin-top: 20px;
   }
 
   p {
-    font-size: 1rem;
+    font-size: 15px;
+    margin-top: 10px;
   }
 
   @media (max-width: 768px) {
-    width: 100%;
-    h4 {
-      font-size: 1.1rem;
-    }
-    p {
-      font-size: 0.9rem;
-    }
-  }
+
+  h4 {
+    margin-top: -50px;
 `;
 
-const Icon = styled.div`
-  font-size: 4.8rem;
-  margin-bottom: 20px;
-  width: 30%;
-  margin-top: 30px;
-
-  @media (max-width: 768px) {
-    font-size: 3rem;
-    width: 25%;
-    background-color: red;
-    padding-left: 10px;
-  }
-`;
-
-const Wrapper1 = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border-right: 1px solid black;
-  width: 30%;
-  border-radius: 10px 0px 0px 10px;
-  padding: 20px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    border-radius: 0 0 0 0;
-    margin-bottom: 20px;
-    width: 100%;
-  }
+const Icon3 = styled.div`
+  font-size: 70px;
+  padding-left: 20px;
+  color: yellowgreen;
 `;
 
 const Wrapper2 = styled.div`
   display: flex;
-  justify-content: center;
+  background-color: yellowgreen;
   align-items: center;
-  background-color: #8ec038;
-  border-right: 1px solid black;
-  height: 100%;
-  width: 30%;
-  padding: 20px;
 
   @media (max-width: 768px) {
-    width: 100%;
-    margin-bottom: 20px;
-    width: 100%;
-    margin-top: -20px;
+    flex-direction: column;
+    height: 240px;
   }
 `;
 
-const Wrapper3 = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #292d35;
-  border-right: 1px solid black;
-  height: 100%;
-  width: 30%;
-  padding: 20px;
+const Text2 = styled.div`
+  width: 70%;
+  background-color: yellowgreen;
+  padding: 30px;
+  height: 70%;
+  margin-left: 20px;
+
+  h4 {
+    font-size: 20px;
+    margin-top: 20px;
+    color: white;
+  }
+
+  p {
+    font-size: 15px;
+    margin-top: 10px;
+  }
 
   @media (max-width: 768px) {
+
+  h4 {
+    margin-top: -50px;
+`;
+
+const Icon2 = styled.div`
+  font-size: 70px;
+  color: white;
+  padding-left: 20px;
+`;
+
+const Text1 = styled.div`
+  width: 70%;
+  background-color: white;
+  padding: 30px;
+  height: 70%;
+  margin-left: 20px;
+  h4 {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+  p {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 768px) {
+
+  h4 {
+    margin-top: -50px;
+
+
+
+`;
+
+const Icon1 = styled.div`
+  font-size: 70px;
+  color: yellowgreen;
+  padding-left: 20px;
+`;
+
+const Wrapper1 = styled.div`
+  display: flex;
+  background-color: white;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 240px;
+  }
+`;
+
+const WrapperBig = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  height: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    display: flex;
     width: 100%;
-    margin-top: -20px;
   }
 `;
 
 const Wrapper = styled.div`
   display: flex;
-  width: 100%;
-  margin-top: -100px;
   justify-content: center;
-  flex-wrap: wrap;
-  padding: 0 20px;
+  margin-top: -80px;
+  width: 100%;
+  height: 200px;
+  // background-color: rgb(202, 231, 206);
 
   @media (max-width: 768px) {
     flex-direction: column;
-    background-color: orange;
-    margin-top: 10px;
-    padding: 0;
+    align-items: center;
+    height: auto;
+    text-align: center;
+    padding: 1rem;
+    width: 90%;
+    margin-top: 50px;
   }
 `;

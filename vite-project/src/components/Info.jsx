@@ -1,40 +1,55 @@
 import styled from "@emotion/styled";
 import logo from "../assets/logo1.png";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import { FaRegClock } from "react-icons/fa6";
+import { RxVideo } from "react-icons/rx";
+import { FaPhone } from "react-icons/fa";
 
 function Info() {
   return (
     <>
       <Wrapper>
-        <WrapperContentLeft>
-          <h2>
-            Healthy and tasty foods with <br /> <span>natural ingredients</span>
-          </h2>
+        <WrapperBig>
+          <WrapperContentLeft>
+            <Title>
+              Healthy and tasty foods with <br />{" "}
+              <span>natural ingredients</span>
+            </Title>
 
-          <p>
-            Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-            impedit quo minus id quod maxime placeat facere possimus, omnis
-            voluptas assumenda est, omnis dolor repellendus.
-          </p>
+            <Content>
+              Nam libero tempore, cum soluta nobis est eligendi optio cumque
+              nihil impedit quo minus id quod maxime placeat facere possimus,
+              omnis voluptas assumenda est, omnis dolor repellendus.
+            </Content>
 
-          <InfoWrapper>
-            <InfoItem>
-              <i class="fa-regular fa-clock"></i>
-              <h4>Everyday from 8AM to 10PM</h4>
-            </InfoItem>
+            <InfoWrapper>
+              <Item1>
+                <Icon>
+                  <FaRegClock />
+                </Icon>
+                <h3>Everyday from 7am to 11pm</h3>
+              </Item1>
 
-            <InfoItem>
-              <i class="fa-solid fa-phone"></i>
-              <h4>+49260-5731-08</h4>
-            </InfoItem>
-          </InfoWrapper>
+              <Item1>
+                <Icon>
+                  <FaPhone />
+                </Icon>
+                <h3>+1 234 567</h3>
+              </Item1>
+            </InfoWrapper>
 
-          <Button>Read More </Button>
+            <Button>Read More </Button>
+          </WrapperContentLeft>
 
-          <Contactinfo></Contactinfo>
-        </WrapperContentLeft>
-
-        <WrapperContentRight></WrapperContentRight>
+          <WrapperContentRight>
+            <img src="./src/assets/infoimg.jpg" alt="Organic Food Delivery" />
+            <Video>
+              <h4>Video About our Company</h4>
+              <VideoIcon>
+                <RxVideo />
+              </VideoIcon>
+            </Video>
+          </WrapperContentRight>
+        </WrapperBig>
       </Wrapper>
     </>
   );
@@ -42,68 +57,200 @@ function Info() {
 
 export default Info;
 
-const Contactinfo = styled.div`
+const WrapperContentRight = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+
+  img {
+    width: 65%;
+    object-fit: cover;
+    margin-top: 50px;
+    margin-left: 50px;
+    display: block;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;}
+
+    img {
+      width: 340px;
+      object-fit: cover;
+      align-self: center;
+      display: block;
+    }
+  }
 `;
 
 const Button = styled.button`
-  background-color: #f8b703;
+  background-color: red;
   color: white;
+  font-size: 1rem;
+  width: 32%;
+  font-weight: 600;
   padding: 1rem 2rem;
+  border-radius: 4rem;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  margin: 1rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: 2rem;
 
   &:hover {
-    background-color: #f8b703;
+    background-color: darkgreen;
+    transition: all 0.3s zoom-in-out;
   }
-`;
 
-const InfoItem = styled.div`
-  display: flex;
-  margin: 2rem 0;
-
-  i {
-    font-size: 2rem;
-    color: white;
-  }
-  h4 {
-    color: white;
+  @media (max-width: 768px) {
+    width: 80%;
+    margin: 10px auto;
+    margin-top: 2rem;
     margin-left: 1rem;
+    height: 40px;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
   }
 `;
 
+const Icon = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 2.2rem;
+  color: yellowgreen;
+`;
+
+const Item1 = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  margin-top: -5px;
+  h3 {
+    color: black;
+    font-size: 1rem;
+    margin-left: 1.3rem;
+  }
+`;
 const InfoWrapper = styled.div`
   display: flex;
-  margin: 2rem 0;
+  margin-top: 2.5rem;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const WrapperContentLeft = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 50%;
+  background-color: ;
+  padding: 0 5rem;
 
-  h2 {
+  @media (max-width: 768px) {
+    width: 70%;
+    align-self: center;
+  }
+`;
+
+const Title = styled.div`
+  font-size: 3.9rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: black;
+  span {
+    color: yellowgreen;
+  }
+
+  @media (max-width: 768px) {
     font-size: 2.5rem;
-    color: white;
-    span {
-      color: #f8b703;
-    }
+    text-align: center;
+  }
+`;
 
-    p {
-      color: white;
-      margin: 1rem 0;
-    }
+const Content = styled.div`
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: black;
+
+  @media (max-width: 768px) {
+    text-align: center;
   }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 100vh;
-  background-color: rgb(134, 107, 107);
+  align-self: center;
+  justify-content: center;
+  height: 800px;
+  margin-top: 5rem;
+  font-family: "Poppins", sans-serif;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 100%;
+  }
+`;
+
+const WrapperBig = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  height: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 100%;
+  }
+`;
+
+const Video = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-top: 70px;
+  position: relative;
+  bottom: 180px;
+  left: 3px;
+  border-radius: 1rem;
+  margin-left: 50px;
+  background-color: white;
+  cursor: pointer;
+
+  h4 {
+    color: black;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+      color: yellowgreen;
+    }
+
+  @media (max-width: 768px) {
+  display: none;
+  }
+`;
+
+const VideoIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: yellowgreen;
+  margin-top: -1.6rem;
+  padding: 0.5rem;
+
+  &:hover {
+    color: black;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;

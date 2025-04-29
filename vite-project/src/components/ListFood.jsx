@@ -8,8 +8,10 @@ import bananas from "../assets/bananas.jpg";
 import chicken from "../assets/chicken.jpg";
 import bananagreen from "../assets/bananaGreen.jpg";
 import tomatoes from "../assets/tomatoes.jpg";
+import { Link } from "react-router-dom";
 
-// Reusable FoodItem Component
+// Reusable FoodItem Component. The FoodItem component is a reusable component that takes image, title, content, and price as props and displays them in a styled format.
+
 function FoodItem({ image, title, content, price }) {
   return (
     <UniqueFood>
@@ -17,7 +19,9 @@ function FoodItem({ image, title, content, price }) {
       <Title>{title}</Title>
       <Content>{content}</Content>
       <Price>{price}</Price>
-      <Button>Order Now</Button>
+      <Link to="/ProductPage" style={{ textDecoration: "none" }}>
+        <Button>View Product</Button>
+      </Link>
     </UniqueFood>
   );
 }
@@ -130,7 +134,7 @@ const Button = styled.button`
   margin-bottom: 20px;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #9acd32;
   }
 `;
 
@@ -195,7 +199,7 @@ const ScrollContainer = styled.div`
   scroll-snap-type: x mandatory;
   padding: 10px;
   gap: 10px;
-  width: 95%;
+  width: 80%;
   justify-content: flex-start;
   scroll-behavior: smooth;
   position: relative;
@@ -237,7 +241,7 @@ const FoodWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 90%;
   background-color: #f3f5ed;
 `;
 
@@ -245,7 +249,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
   min-height: 100vh;
   background-color: #f3f5ed;
   padding: 20px;

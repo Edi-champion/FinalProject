@@ -1,3 +1,5 @@
+// LandingPage.jsx
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header.jsx";
 import Hero from "../components/Hero.jsx";
 import Banner from "../components/banner1.jsx";
@@ -8,7 +10,6 @@ import ListFood from "../components/ListFood.jsx";
 import Subscribe from "../components/Subscribe.jsx";
 import Footer from "../components/Footer.jsx";
 
-// No Router here
 function LandingPage() {
   return (
     <>

@@ -3,6 +3,7 @@ import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -34,9 +35,27 @@ function Footer() {
         <Section>
           <Titre>Explore</Titre>
           <Nav>
-            <NavItem>Home</NavItem>
-            <NavItem>About Us</NavItem>
-            <NavItem>Products</NavItem>
+            <Link
+              to="/LandingPage"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <NavItem>Home</NavItem>
+            </Link>
+
+            <Link
+              to="/AboutUs"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <NavItem>About Us</NavItem>
+            </Link>
+
+            <Link
+              to="/ProductPage"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <NavItem>Products</NavItem>
+            </Link>
+
             <NavItem>Blog</NavItem>
             <NavItem>Contact</NavItem>
           </Nav>

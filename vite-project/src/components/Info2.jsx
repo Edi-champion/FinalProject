@@ -16,10 +16,7 @@ function Info2() {
 
             <Text>
               <h4>Only natural food</h4>
-              <p>
-                class aptent taciti sociosqu ad litora torquent per conubia
-                nostra
-              </p>
+              <p>Our products are sourced from local farmers and suppliers.</p>
             </Text>
           </Wrapper1>
 
@@ -31,10 +28,7 @@ function Info2() {
 
             <Text>
               <h4>Various Choice</h4>
-              <p>
-                class aptent taciti sociosqu ad litora torquent per conubia
-                nostra
-              </p>
+              <p>Choose from a wide range of organic food products.</p>
             </Text>
           </Wrapper1>
 
@@ -46,8 +40,7 @@ function Info2() {
             <Text>
               <h4>Sustainable packaging</h4>
               <p>
-                class aptent taciti sociosqu ad litora torquent per conubia
-                nostra
+                We care about the environment and use eco-friendly packaging.
               </p>
             </Text>
           </Wrapper1>
@@ -59,10 +52,7 @@ function Info2() {
 
             <Text>
               <h4>No waste</h4>
-              <p>
-                class aptent taciti sociosqu ad litora torquent per conubia
-                nostra
-              </p>
+              <p>Every product is processed and packaged to minimize waste.</p>
             </Text>
           </Wrapper1>
         </WrapperBig>
@@ -104,7 +94,7 @@ const Text = styled.div`
 
     p {
       font-size: 1.1rem;
-      margin-top: -1rem;
+      margin-top: -0.5rem;
 
     }
 `;
@@ -138,15 +128,6 @@ const Wrapper1 = styled.div`
   margin-top: -0.5rem;
 `;
 
-const Line = styled.div`
-  width: 120px;
-  height: 2px;
-  position: absolute;
-  top: 1960px;
-  left: 66%;
-  background-color: red;
-`;
-
 const WrapperBig = styled.div`
   display: flex;
   justify-content: center;
@@ -172,6 +153,7 @@ const Wrapper = styled.div`
   height: 400px;
   margin-top: 1rem;
   background-color: #f3f5ed;
+  font-family: "Poppins", sans-serif;
 
   @media (max-width: 768px) {
     flex-direction: column;

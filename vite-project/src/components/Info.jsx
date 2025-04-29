@@ -16,9 +16,11 @@ function Info() {
             </Title>
 
             <Content>
-              Nam libero tempore, cum soluta nobis est eligendi optio cumque
-              nihil impedit quo minus id quod maxime placeat facere possimus,
-              omnis voluptas assumenda est, omnis dolor repellendus.
+              Our delivery service is designed to make your life easier. We
+              offer a wide range of organic food products, including fresh
+              fruits and vegetables, whole grains, dairy products, and healthy
+              snacks. We source our products from local farmers and suppliers,
+              ensuring that they are fresh and of the highest quality.
             </Content>
 
             <InfoWrapper>
@@ -43,7 +45,7 @@ function Info() {
           <WrapperContentRight>
             <img src="./src/assets/infoimg.jpg" alt="Organic Food Delivery" />
             <Video>
-              <h4>Video About our Company</h4>
+              <h4>Video About Our Company</h4>
               <VideoIcon>
                 <RxVideo />
               </VideoIcon>
@@ -101,7 +103,7 @@ const Button = styled.button`
   margin-top: 2rem;
 
   &:hover {
-    background-color: darkgreen;
+    background-color: #9acd32;
     transition: all 0.3s zoom-in-out;
   }
 
@@ -156,7 +158,7 @@ const WrapperContentLeft = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 3.9rem;
+  font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.1;
   color: black;

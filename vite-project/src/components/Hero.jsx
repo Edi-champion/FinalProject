@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 import logo2 from "../assets/logo2.webp";
 import panier from "../assets/panier.png";
+import { Link } from "react-router-dom";
+import Login from "../Pages/Login";
+import Signup from "../Pages/Signup";
 
 function Hero() {
   return (
@@ -14,14 +17,19 @@ function Hero() {
           </HeroTitle>
 
           <HeroText>
-            Get your healthy meals delivered to your doorsteps. We deliver
-            organic food that is good for your health. Our meals are prepared
-            with fresh ingredients and are delivered to your doorsteps.
+            Get your healthy groceries delivered to your doorsteps. We deliver
+            organic food that is good for your health. Our products are sourced
+            from the best farmers in the world, using only the freshest
+            ingredients and are delivered to your doorsteps.
           </HeroText>
 
           <HeroButtons>
-            <Button1>Read More</Button1>
-            <Button2>View Plans</Button2>
+            <Link to="/Signup">
+              <Button1>Sign up</Button1>
+            </Link>
+            <Link to="/ProductPage">
+              <Button2>View Shop</Button2>
+            </Link>
           </HeroButtons>
         </HeroContentLeft>
 
@@ -36,15 +44,18 @@ export default Hero;
 
 const HeroContainer = styled.div`
   display: flex;
-  flex-direction: row;
+
   align-items: center;
   justify-content: center;
   width: 95%;
+
+  margin: 0 auto;
   height: 100vh;
   background-color: #f3f5ed;
   padding: 2rem;
   font-family: "Poppins", sans-serif;
-  overflow-x: hidden; /* Added this line */
+
+  // overflow-x: hidden;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -84,7 +95,7 @@ const HeroContentRight = styled.div`
 
   img {
     width: 90%;
-    max-width: 350px;
+    max-width: 400px;
     object-fit: contain;
   }
 
@@ -94,13 +105,14 @@ const HeroContentRight = styled.div`
 `;
 
 const HeroTitle = styled.h1`
-  font-size: 3rem;
+  font-size: 3.6rem;
   font-weight: 700;
+  line-height: 1.2;
   color: #000;
   margin-bottom: 20px;
 
   span {
-    color: green;
+    color: #9acd32;
   }
 
   @media (max-width: 768px) {
@@ -152,7 +164,7 @@ const Button1 = styled.button`
 `;
 
 const Button2 = styled(Button1)`
-  background-color: green;
+  background-color: #9acd32;
   &:hover {
     background-color: darkgreen;
   }

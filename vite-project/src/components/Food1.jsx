@@ -15,9 +15,11 @@ function Food1() {
             </Title>
 
             <Content>
-              Nam libero tempore, cum soluta nobis est eligendi optio cumque
-              nihil impedit quo minus id quod maxime placeat facere possimus,
-              omnis voluptas assumenda est, omnis dolor repellendus.
+              At Fresh Grocery, we believe that healthy eating should be easy
+              and enjoyable. That's why we offer a wide range of free and
+              balanced recipes made just for you. Whether you're looking for a
+              quick and easy meal, a healthy snack, or a complete meal plan,
+              we've got you covered.
             </Content>
 
             <InfoWrapper>
@@ -65,13 +67,15 @@ const WrapperContentRight = styled.div`
 
   @media (max-width: 768px) {
    width: 260px;
-   margin-left: -2rem;
+   margin-left: 2rem;
+    margin-top: 0rem;
    
 
    img {
       width: 50px;
       margin-left: 5rem;
       object-fit: cover;
+    
     }
   }
 `;
@@ -102,13 +106,6 @@ const Button = styled.button`
     font-size: 0.9rem;
     padding: 0.5rem 1.5rem;
   }
-`;
-
-const Icon = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 2.2rem;
-  color: yellowgreen;
 `;
 
 const Item1 = styled.div`
@@ -145,6 +142,12 @@ const WrapperContentLeft = styled.div`
   width: 50%;
 
   padding: 0 5rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+    margin-top: 5rem;
+    width: 30%;
+  }
 `;
 
 const Title = styled.div`
@@ -186,6 +189,7 @@ const Wrapper = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     height: auto;
+    width: 100%;
   }
 `;
 
@@ -198,7 +202,10 @@ const WrapperBig = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: center;
+    width: 100%;
     justify-content: center;
+    align-items: center;
+    
+    
     height: auto;
 `;

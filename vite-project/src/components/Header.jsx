@@ -6,6 +6,10 @@ import { MdMenu, MdClose } from "react-icons/md";
 import AboutUs from "../Pages/AboutUs";
 import ProductPage from "../Pages/ProductPage";
 import LandingPage from "../Pages/LandingPage";
+import Blog from "../Pages/Blog";
+import Contacts from "../Pages/Contacts";
+import Cart from "../Pages/Cart";
+import { FaShoppingCart } from "react-icons/fa";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,19 +27,73 @@ function Header() {
 
         <Ulist isOpen={isOpen}>
           <CloseButton onClick={() => setIsOpen(false)}>
-            <MdClose size={30} />
+            <MdClose size={40} />
           </CloseButton>
           <LI>
-            <Link to="/"></Link>Home
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontSize: "1rem",
+              }}
+            >
+              Home
+            </Link>
           </LI>
           <LI>
-            <Link to="/AboutUs">About Us</Link>
+            <Link
+              to="/AboutUs"
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontSize: "1rem",
+              }}
+            >
+              About Us
+            </Link>
           </LI>
           <LI>
-            <Link to="/ProductPage">Products</Link>
+            <Link
+              to="/ProductPage"
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontSize: "1rem",
+              }}
+            >
+              Products
+            </Link>
           </LI>
-          <LI>Blog</LI>
-          <LI>Contacts</LI>
+          <LI>
+            <Link
+              to="/Blog"
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontSize: "1rem",
+              }}
+            >
+              Blog
+            </Link>
+          </LI>
+          <LI>
+            <Link
+              to="/Contacts"
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontSize: "1rem",
+              }}
+            >
+              Contacts
+            </Link>
+          </LI>
+          <LI>
+            <CartLink to="/cart">
+              <FaShoppingCart size={24} />
+            </CartLink>
+          </LI>
         </Ulist>
       </Nav>
     </HeaderContainer>
@@ -45,55 +103,28 @@ function Header() {
 export default Header;
 
 // Styled Components
-const Button = styled.button`
-  background-color: red;
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 0.6rem 2rem;
-  border-radius: 4rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  margin-left: auto;
-  margin-right: 250px;
 
-  &:hover {
-    background-color: darkgreen;
-  }
-
-  @media (max-width: 768px) {
-    width: 80%;
-    margin: 10px auto;
-    height: 40px;
-    font-size: 0.9rem;
-    padding: 0.5rem 1.5rem;
-    display: none;
-  }
-`;
-
-const A = styled.a`
+const CartLink = styled(Link)`
   text-decoration: none;
   color: black;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.5rem;
   display: flex;
-  justify-content: center;
-  transition: color 0.3s;
+  align-items: center;
+  transition: color 0.3s ease;
 
   &:hover {
     color: green;
-  }
-
-  @media (max-width: 768px) {
-    text-align: center;
-    font-size: 1.2rem;
   }
 `;
 
 const LI = styled.li`
   list-style: none;
   margin: 0 1rem;
+  text-decoration: none;
+
+  &hover {
+    color: #019875;
+  }
 
   @media (max-width: 768px) {
     margin: 10px 0;
@@ -105,6 +136,7 @@ const Ulist = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Fira Sans", sans-serif;
   list-style: none;
   width: 50%;
   padding: 0;
@@ -113,10 +145,10 @@ const Ulist = styled.ul`
   @media (max-width: 768px) {
     flex-direction: column;
     position: fixed;
-    top: 0;
+    top: -30px;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 70vh;
     background-color: white;
     transform: ${({ isOpen }) =>
       isOpen ? "translateX(0)" : "translateX(-100%)"};
@@ -137,6 +169,9 @@ const CloseButton = styled.div`
 
   @media (max-width: 768px) {
     display: block;
+    margin-top: 100px;
+    font-size: 4rem;
+    color: green;
   }
 `;
 
@@ -152,6 +187,7 @@ const Logo = styled.div`
 
     @media (max-width: 768px) {
       width: 80px;
+
       margin-left: -130px;
     }
   }

@@ -1,19 +1,8 @@
 import styled from "@emotion/styled";
-import axios from "axios";
-import React, { useContext } from "react";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import MockProducts from "../../JSONFILES/MockProducts";
 import { CartContext } from "../../context/Cartcontext";
-import { useNavigate } from "react-router-dom";
-
-// const navigate = useNavigate();
-// const { addTocart } = useContext(CartContext);
-
-// const handleAddToCart = (product) => {
-//   addTocart(product);
-//   navigate("/cart");
-// };
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -21,25 +10,50 @@ function ProductList() {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [cart, setCart] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [addedProduct, setAddedProduct] = useState(null);
+  const navigate = useNavigate();
+  const { addToCart, currency, changeCurrency } = useContext(CartContext);
 
   useEffect(() => {
-    setTimeout(() => {
-      setProducts(MockProducts);
-    }, 1500);
+    const fetchProducts = async () => {
+      setTimeout(() => {
+        setProducts(MockProducts);
+      }, 1500);
+    };
+    fetchProducts();
   }, []);
 
-  const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
-    console.log("Cart:", [...cart, product]);
+  const handleAddToCart = (product) => {
+    const { amount } = convertPrice(product.Price); // Get the converted price
+    const productToAdd = {
+      ...product,
+      Price: amount, // Set the converted price
+    };
+    console.log("Adding to cart:", productToAdd); // Debugging line
+    addToCart(productToAdd); // Add the product with the correct price to the cart
+    setAddedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  // Function to convert price based on selected currency
+  const convertPrice = (price) => {
+    const numericPrice = parseFloat(price); // Ensure price is a number
+    if (isNaN(numericPrice)) {
+      return { amount: 0, symbol: currency === "RWF" ? "RWF" : "$" }; // Return 0 if the price is not a valid number
+    }
+    if (currency === "RWF") {
+      return { amount: numericPrice * 1100, symbol: "RWF" }; // Example conversion rate from USD to RWF
+    }
+    return { amount: numericPrice, symbol: "$" }; // Return price in USD
   };
 
   const filteredProducts = products.filter((product) => {
-    const price = parseFloat(product.Price);
+    const price = convertPrice(parseFloat(product.Price)); // Convert price based on selected currency
     const categoryMatch =
       categoryFilter === "All" || product.Category === categoryFilter;
-    const minMatch = minPrice === "" || price >= parseFloat(minPrice);
-    const maxMatch = maxPrice === "" || price <= parseFloat(maxPrice);
+    const minMatch = minPrice === "" || price.amount >= parseFloat(minPrice);
+    const maxMatch = maxPrice === "" || price.amount <= parseFloat(maxPrice);
     const searchMatch = product.Title.toLowerCase().includes(
       searchQuery.toLowerCase()
     );
@@ -52,8 +66,13 @@ function ProductList() {
     ...new Set(MockProducts.map((item) => item.Category)),
   ];
 
+  const closeModal = () => {
+    setIsModalOpen(false); // Close the modal
+  };
+
   return (
     <>
+      {/* Filter Container */}
       <FilterContainer>
         <label>
           Category:
@@ -95,13 +114,33 @@ function ProductList() {
             placeholder="Search by title..."
           />
         </label>
+        <label>
+          Currency:
+          <select
+            onChange={(e) => changeCurrency(e.target.value)}
+            value={currency}
+          >
+            <option value="USD">USD</option>
+            <option value="RWF">RWF</option>
+          </select>
+        </label>
       </FilterContainer>
 
+      {/* Cart Button */}
+      <CartBar>
+        <Link to="/cart">
+          <ViewCartButton>View Cart</ViewCartButton>
+        </Link>
+      </CartBar>
+
+      {/* Product List */}
       <Container>
-        {filteredProducts.length === 0 ? (
-          <p>Loading or no products match...</p>
-        ) : (
-          filteredProducts.map((product) => (
+        {filteredProducts.map((product) => {
+          const { amount, symbol } = convertPrice(product.Price); // Get amount and symbol
+          const formattedPrice =
+            amount !== undefined ? amount.toFixed(2) : "0.00"; // Check for undefined and format
+
+          return (
             <Card key={product.id}>
               <Link to={`/getSingleProduct/${product.id}`}>
                 <Image>
@@ -110,54 +149,55 @@ function ProductList() {
               </Link>
               <Content>
                 <Title>{product.Title}</Title>
-                <Price>${product.Price}</Price>
+                <Price>
+                  {symbol} {formattedPrice}
+                </Price>{" "}
+                {/* Display formatted price */}
                 <Category>{product.Category}</Category>
                 <Details>{product.Details}</Details>
-
-                <AddButton onClick={() => addToCart(product)}>
+                <AddButton onClick={() => handleAddToCart(product)}>
                   Add to Cart
                 </AddButton>
               </Content>
             </Card>
-          ))
-        )}
+          );
+        })}
       </Container>
+
+      {/* Modal Popup */}
+      {isModalOpen && (
+        <ModalOverlay>
+          <Modal>
+            <h2>Added to Cart!</h2>
+            <p>{addedProduct?.Title} has been added to your cart.</p>
+            <ButtonContainer>
+              <ModalButton onClick={() => navigate("/cart")}>
+                Go to Cart
+              </ModalButton>
+              <ModalButton onClick={closeModal}>Close</ModalButton>
+            </ButtonContainer>
+          </Modal>
+        </ModalOverlay>
+      )}
     </>
   );
 }
 
 export default ProductList;
 
+// Styles
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
   font-family: "Poppins", sans-serif;
-`;
-
-const ProductContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #f8f8f8;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-`;
-
-const Content = styled.div`
-  width: 100%;
-  height: 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 const Card = styled.div`
-  width: 330px;
+  width: 300px;
   height: 500px;
   margin: 20px;
   border-radius: 10px;
@@ -178,6 +218,15 @@ const Image = styled.div`
     height: 90%;
     object-fit: cover;
   }
+`;
+
+const Content = styled.div`
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Title = styled.h2`
@@ -236,5 +285,67 @@ const FilterContainer = styled.div`
     font-weight: bold;
     align-items: center;
   }
-  select,
+
+  input,
+  select {
+    margin-left: 10px;
+    padding: 5px;
+  }
+`;
+
+const ViewCartButton = styled.button`
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  margin: 10px;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: #555;
+  }
+`;
+
+const CartBar = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 40px;
+`;
+
+// Modal Styles
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const Modal = styled.div`
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  width: 300px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+`;
+
+const ModalButton = styled.button`
+  background-color: #019875;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
 `;

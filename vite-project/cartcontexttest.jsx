@@ -17,7 +17,7 @@ export const CartProvider = ({ children }) => {
   });
 
   // Currency state
-  const [currency, setCurrency] = useState("RWF"); // Default currency set to RWF
+  const [currency, setCurrency] = useState("USD"); // Default currency
 
   // Update localStorage whenever the cart changes
   useEffect(() => {
@@ -26,30 +26,23 @@ export const CartProvider = ({ children }) => {
 
   // Function to convert price based on selected currency
   const convertPrice = (price) => {
-    const numericPrice = parseFloat(price); // Ensure price is a number
-    if (isNaN(numericPrice)) {
-      return { amount: 0, symbol: currency === "RWF" ? "RWF" : "$" }; // Return 0 if the price is not a valid number
-    }
     if (currency === "RWF") {
-      return { amount: numericPrice * 1100, symbol: "RWF" }; // Example conversion rate from USD to RWF
+      return price * 1100; // Example conversion rate from USD to RWF
     }
-    return { amount: numericPrice, symbol: "$" }; // Return price in USD
+    return price; // Return price in USD
   };
 
   // Add product to the cart (with quantity management)
   const addToCart = (product) => {
-    // Convert Price to a number and apply conversion
-    const { amount } = convertPrice(parseFloat(product.Price)); // Extract amount from conversion
-
+    // Convert Price to a number and apply currency conversion
     const productWithNumberPrice = {
       ...product,
-      Price: amount, // Set Price to the converted amount
+      Price: convertPrice(parseFloat(product.Price)), // Convert Price to a number and apply conversion
     };
 
     const existingProduct = cart.find(
       (item) => item.id === productWithNumberPrice.id
     );
-
     if (existingProduct) {
       setCart((prevCart) =>
         prevCart.map((item) =>
@@ -103,3 +96,5 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
+
+export default CartProvider;

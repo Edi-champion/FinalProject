@@ -8,8 +8,8 @@ function Subscribe() {
           Subscribe <span>to our newsletter</span>
         </Title>
         <Description>
-          Quisque pretium dolor turpis, quis blandit turpis semper ut. Nam
-          malesuada eros nec luctus laoreet.
+          Stay updated with the latest news and offers from our farm. Sign up
+          now!
         </Description>
         <Form>
           <Input type="email" placeholder="Your email ..." />
@@ -23,7 +23,7 @@ function Subscribe() {
 export default Subscribe;
 
 const SubscribeSection = styled.section`
-  background-color: #a3d661;
+  background-color: #acd559;
   padding: 3rem 1rem;
   text-align: center;
   display: flex;

@@ -13,9 +13,10 @@ function banner1() {
           </Icon1>
 
           <Text1>
-            <h4>Easy payments</h4>
+            <h4>Smooth Delivery</h4>
             <p>
-              class aptent taciti sociosqu ad litora torquent per conubia nostra
+              We provide a smooth delivery experience for our customers. Our
+              delivery team is trained to handle your orders with care
             </p>
           </Text1>
         </Wrapper1>
@@ -28,7 +29,8 @@ function banner1() {
           <Text2>
             <h4>Easy payments</h4>
             <p>
-              class aptent taciti sociosqu ad litora torquent per conubia nostra
+              We offer a variety of payment options to make your shopping
+              experience as convenient as possible.
             </p>
           </Text2>
         </Wrapper2>
@@ -41,7 +43,8 @@ function banner1() {
           <Text3>
             <h4>Exact calories</h4>
             <p>
-              Nam libero tempore, cum soluta nobis est eligendi optio cumque
+              We provide exact calories for each food item, so you can make
+              informed decisions about your meals.
             </p>
           </Text3>
         </Wrapper3>
@@ -64,11 +67,11 @@ const Wrapper3 = styled.div`
 `;
 
 const Text3 = styled.div`
-  width: 70%;
+  width: 80%;
   background-color: #292d35;
   padding: 30px;
   height: 70%;
-  margin-left: 20px;
+  margin-left: 20px; 
   color: white;
 
   h4 {
@@ -78,7 +81,7 @@ const Text3 = styled.div`
 
   p {
     font-size: 15px;
-    margin-top: 10px;
+    margin-top: -20px;
   }
 
   @media (max-width: 768px) {
@@ -105,7 +108,7 @@ const Wrapper2 = styled.div`
 `;
 
 const Text2 = styled.div`
-  width: 70%;
+  width: 80%;
   background-color: yellowgreen;
   padding: 30px;
   height: 70%;
@@ -119,7 +122,7 @@ const Text2 = styled.div`
 
   p {
     font-size: 15px;
-    margin-top: 10px;
+    margin-top: -20px;
   }
 
   @media (max-width: 768px) {
@@ -135,11 +138,13 @@ const Icon2 = styled.div`
 `;
 
 const Text1 = styled.div`
-  width: 70%;
+  width: 80%;
+
   background-color: white;
   padding: 30px;
   height: 70%;
   margin-left: 20px;
+  
   h4 {
     font-size: 20px;
     margin-top: 20px;
@@ -147,7 +152,7 @@ const Text1 = styled.div`
 
   p {
     font-size: 15px;
-    margin-top: 10px;
+    margin-top: -20px;
   }
 
   @media (max-width: 768px) {
@@ -196,6 +201,8 @@ const Wrapper = styled.div`
   margin-top: -80px;
   width: 100%;
   height: 200px;
+  font-family: "Poppins", sans-serif;
+
   // background-color: rgb(202, 231, 206);
 
   @media (max-width: 768px) {

@@ -14,10 +14,6 @@ import Header from "./components/Header";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 
-const stripePromise = loadStripe(
-  "pk_test_51RGPeaIHQAXrS2hxMjQe7STwgHlZ3LWJzKByHWUH0BHAgxG32c6rP5heh5cGNkMlayU02blNJju5arPzzKQloEpT00OyqUyPaV"
-); // Replace this with your actual Stripe key
-
 function App() {
   return (
     <>
